@@ -77,3 +77,7 @@ E:\Book_Train_Tickets\BAITAP\BookTrainTicketsWEB\obj\Debug\BookTrainTicketsWEB.c
 E:\Book_Train_Tickets\BAITAP\BookTrainTicketsWEB\obj\Debug\BookTrainTicketsWEB.csproj.CopyComplete
 E:\Book_Train_Tickets\BAITAP\BookTrainTicketsWEB\obj\Debug\BookTrainTicketsWEB.dll
 E:\Book_Train_Tickets\BAITAP\BookTrainTicketsWEB\obj\Debug\BookTrainTicketsWEB.pdb
+E:\Book_Train_Tickets\BAITAP\BookTrainTicketsWEB\bin\EntityFramework.dll
+E:\Book_Train_Tickets\BAITAP\BookTrainTicketsWEB\bin\EntityFramework.SqlServer.dll
+E:\Book_Train_Tickets\BAITAP\BookTrainTicketsWEB\bin\EntityFramework.xml
+E:\Book_Train_Tickets\BAITAP\BookTrainTicketsWEB\bin\EntityFramework.SqlServer.xml

@@ -239,10 +239,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LichTrinhController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CTPhieuDatVe.cs" />
     <Compile Include="Models\EFQuanLyDatVe.cs" />
+    <Compile Include="Models\KieuGhe.cs" />
+    <Compile Include="Models\LichTrinh.cs" />
+    <Compile Include="Models\NguoiDung.cs" />
+    <Compile Include="Models\NhaGa.cs" />
+    <Compile Include="Models\PhieuDatVe.cs" />
+    <Compile Include="Models\Quyen.cs" />
+    <Compile Include="Models\Tau.cs" />
+    <Compile Include="Models\Toa.cs" />
+    <Compile Include="Models\VeTau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +264,7 @@
     <Content Include="Assets\Admin\img\.DS_Store" />
     <Content Include="Assets\Admin\img\blog\.DS_Store" />
     <Content Include="Assets\Admin\img\elements\.DS_Store" />
+    <Content Include="Areas\Admin\Views\LichTrinh\LichTrinh.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

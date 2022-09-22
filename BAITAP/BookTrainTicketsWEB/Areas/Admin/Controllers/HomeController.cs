@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookTrainTicketsWEB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace BookTrainTicketsWEB.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Admin/Home
+        EFQuanLyDatVe db = new EFQuanLyDatVe();
+
         public ActionResult Index()
         {
+            ViewBag.GaDen_Di = db.NhaGa.ToList();
             return View();
         }
     }

@@ -114,6 +114,7 @@ insert into KieuGhe (TenKieuGhe, ViTriGhe, LePhi, TrangThai, MaToa) values (N'Gh
 insert into KieuGhe (TenKieuGhe, ViTriGhe, LePhi, TrangThai, MaToa) values (N'Ghế 3', 3, 0, 0, 1);
 insert into KieuGhe (TenKieuGhe, ViTriGhe, LePhi, TrangThai, MaToa) values (N'Ghế 4', 4, 0, 0, 1);
 insert into KieuGhe (TenKieuGhe, ViTriGhe, LePhi, TrangThai, MaToa) values (N'Ghế 5', 5, 20, 0, 1);
+insert into KieuGhe (TenKieuGhe, ViTriGhe, LePhi, TrangThai, MaToa) values (N'Ghế 6', 6, 20, 0, 1);
 go
 create table VeTau
 (
@@ -164,4 +165,5 @@ create table CTPhieuDatVe
 	foreign key(MaPhieuDatve)references PhieuDatVe(MaPhieuDatve)
 )
 go
-insert into CTPhieuDatVe (DoiTuong, ThanhTien, MaVeTau, MaPhieuDatve) values (N'Vé Tàu SE', 50000, 0, 6, 1);
+insert into CTPhieuDatVe (DoiTuong, ThanhTien, MaVeTau, MaPhieuDatve) values (1, 50000, 1, 1);
+insert into CTPhieuDatVe (DoiTuong, ThanhTien, MaVeTau, MaPhieuDatve) values (1, 50000, 2, 2);
