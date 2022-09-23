@@ -1,9 +1,6 @@
 ﻿using BookTrainTicketsWEB.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BookTrainTicketsWEB.Areas.Admin.Controllers
@@ -13,25 +10,49 @@ namespace BookTrainTicketsWEB.Areas.Admin.Controllers
         EFQuanLyDatVe db = new EFQuanLyDatVe();
 
         [HttpPost]
-        public ActionResult LichTrinh(int iGaDi, int iGaDen, string sNgayDi, string sNgayVe)
+        public ActionResult LichTrinh(int iGaDi, string sGaDen, string sNgayDi, string sNgayVe)
         {
+            
             // trường hợp ngày về = null => không phải vé khứ hồi
             if (string.IsNullOrEmpty(sNgayVe.ToString()))
             {
-                var listLichTrinh = db.LichTrinh.Where(n => n.MaNhaGa == iGaDi &&
-                                                            n.GaDen == iGaDen &&
-                                                            n.NgayDi.Year == sNgayVe.Year &&
-                                                            n.NgayDi.Month == sNgayVe.Month &&
-                                                            n.NgayDi.Date == sNgayVe.Date).ToList();
-                return View(listLichTrinh);
+                // Ép kiểu string thành kiểu datetime
+                DateTime dNgayDi = DateTime.Parse(sNgayDi);
+
+                ViewBag.ListLichTrinhDi = db.LichTrinh.Where(n => n.MaNhaGa == iGaDi &&
+                                                            n.GaDen.Equals(sGaDen) &&
+                                                            n.NgayDi.Year == dNgayDi.Year &&
+                                                            n.NgayDi.Month == dNgayDi.Month &&
+                                                            n.NgayDi.Day == dNgayDi.Day).ToList();
+
+                ViewBag.LichTrinhKhuHoi = 0;
             }
-            else // Trường hợp muốn tìm vé khứ hồi
+            else // Trường hợp muốn tìm vé đi và cả vé khứ hồi
             {
-                var listLichTrinh = db.LichTrinh.Where(n => n.MaNhaGa == iGaDen &&
-                                                           n.GaDen == iGaDi &&
-                                                           n.NgayDi.ToString("yyyyMMdd").Equals(Convert.ToDateTime(sNgayVe).ToString("yyyyMMdd"))).ToList();
-                return View(listLichTrinh);
+                // Ép kiểu string thành kiểu datetime
+                DateTime dNgayVe = DateTime.Parse(sNgayVe);
+                DateTime dNgayDi = DateTime.Parse(sNgayDi);
+
+                // Tìm mã ga đến theo tên
+                int iMaNhaGa = db.NhaGa.Where(n => n.TenNhaGa.Equals(sGaDen)).Select(n => n.MaNhaGa).FirstOrDefault();
+
+                // Tìm tên ga đi theo tên
+                string sTenNhaGa = db.NhaGa.Where(n => n.MaNhaGa == iGaDi).Select(n => n.TenNhaGa).FirstOrDefault();
+
+                ViewBag.ListLichTrinhDi = db.LichTrinh.Where(n => n.MaNhaGa == iGaDi &&
+                                                             n.GaDen.Equals(sGaDen) &&
+                                                             n.NgayDi.Year == dNgayDi.Year &&
+                                                             n.NgayDi.Month == dNgayDi.Month &&
+                                                             n.NgayDi.Day == dNgayDi.Day).ToList();
+
+
+                ViewBag.LichTrinhKhuHoi = db.LichTrinh.Where(n => n.MaNhaGa == iMaNhaGa &&
+                                                            n.GaDen.Equals(sTenNhaGa) &&
+                                                            n.NgayDi.Year == dNgayVe.Year &&
+                                                            n.NgayDi.Month == dNgayVe.Month &&
+                                                            n.NgayDi.Day == dNgayVe.Day).ToList();
             }
+            return View();
         }
     }
 }

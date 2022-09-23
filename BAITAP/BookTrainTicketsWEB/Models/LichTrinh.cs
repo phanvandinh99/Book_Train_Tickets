@@ -9,12 +9,20 @@ namespace BookTrainTicketsWEB.Models
     [Table("LichTrinh")]
     public partial class LichTrinh
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LichTrinh()
+        {
+            VeTau = new HashSet<VeTau>();
+        }
+
         [Key]
         public int MaLichTrinh { get; set; }
 
         public DateTime NgayDi { get; set; }
 
-        public int GaDen { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string GaDen { get; set; }
 
         public DateTime NgayDuKienDen { get; set; }
 
@@ -25,5 +33,8 @@ namespace BookTrainTicketsWEB.Models
         public virtual NhaGa NhaGa { get; set; }
 
         public virtual Tau Tau { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VeTau> VeTau { get; set; }
     }
 }

@@ -27,13 +27,13 @@ namespace BookTrainTicketsWEB.Models
 
         public int? MaKieuGhe { get; set; }
 
-        public int? MaNhaGa { get; set; }
+        public int? MaLichTrinh { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPhieuDatVe> CTPhieuDatVe { get; set; }
 
         public virtual KieuGhe KieuGhe { get; set; }
 
-        public virtual NhaGa NhaGa { get; set; }
+        public virtual LichTrinh LichTrinh { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@using BookTrainTicketsWEB.Models
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="en" class="no-js">
 <head>
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,11 +60,11 @@
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.html"><img src="~/Assets/Admin/img/logo.png" alt="" title="" /></a>
+                    <a href="~/Admin/Home/Index"><img src="~/Assets/Admin/img/logo.png" alt="" title="" /></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="~/Admin/Home/Index">Trang Chủ</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="packages.html">Packages</a></li>
                         <li><a href="hotels.html">Hotels</a></li>
@@ -125,23 +125,24 @@
                         <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
                             @using (Html.BeginForm("LichTrinh", "LichTrinh", FormMethod.Post, new { @class = "form-wrap" }))
                             {
-                                <select class="form-control" name="iGaDi">
+                                @Html.ValidationSummary()
+                                <select class="form-control" name="iGaDi" id="iGaDi">
                                     <option value="0">Ga Đi</option>
                                     @foreach (var item in listDaDen_Di)
                                     {
                                         <option value="@item.MaNhaGa">@item.TenNhaGa</option>
                                     }
                                 </select>
-                                <select class="form-control" name="iGaDen">
+                                <select class="form-control" name="sGaDen" id="sGaDen">
                                     <option value="0">Ga Đến</option>
                                     @foreach (var item in listDaDen_Di)
                                     {
-                                        <option value="@item.MaNhaGa">@item.TenNhaGa</option>
+                                        <option value="@item.TenNhaGa">@item.TenNhaGa</option>
                                     }
                                 </select>
-                                <input type="text" class="form-control date-picker" name="sNgayDi" placeholder="Ngày Đi " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ngày Đi '" required>
-                                <input type="text" class="form-control date-picker" name="sNgayVe" placeholder="Ngày Về " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ngày Về '">
-                                <input type="submit" class="primary-btn text-uppercase" value="Tìm Kiếm" />
+                                <input type="text" class="form-control date-picker CHK" name="sNgayDi" placeholder="Ngày Đi " autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ngày Đi '" required>
+                                <input type="text" class="form-control date-picker CHK" name="sNgayVe" placeholder="Ngày Về " autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ngày Về '">
+                                <input type="submit" class="primary-btn text-uppercase" onclick="CheckLichTrinh()" value="Tìm Kiếm" />
                             }
                         </div>
                         <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">

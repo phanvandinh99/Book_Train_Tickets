@@ -59,7 +59,7 @@ create table LichTrinh
 (
 	MaLichTrinh int identity(1,1) primary key,
 	NgayDi datetime default(getdate()) not null,
-	GaDen int not null,
+	GaDen nvarchar(100) not null,
 	NgayDuKienDen datetime default(getdate()) not null,
 	MaTau int,
 	MaNhaGa int,
@@ -67,11 +67,11 @@ create table LichTrinh
 	foreign key(MaNhaGa)references NhaGa(MaNhaGa),
 )
 go
-insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, 1, default, 1, 2);
-insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, 2, default, 2, 3);
-insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, 3, default, 3, 4);
-insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, 4, default, 4, 5);
-insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, 5, default, 5, 6);
+insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, N'Ga Hà Nội', default, 1, 2);
+insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, N'Ga Hải Phòng', default, 2, 3);
+insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, N'Ga Thái Nguyên', default, 3, 4);
+insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, N'Ga Huế', default, 4, 5);
+insert into LichTrinh (NgayDi, GaDen, NgayDuKienDen, MaTau, MaNhaGa) values (default, N'Ga Đà Nẵng', default, 5, 6);
 go
 create table Toa
 (
@@ -123,17 +123,17 @@ create table VeTau
 	GiaVe float default(50000) not null,
 	TrangThai int null,
 	MaKieuGhe int,
-	MaNhaGa int,
+	MaLichTrinh int,
 	foreign key(MaKieuGhe)references KieuGhe(MaKieuGhe),
-	foreign key(MaNhaGa)references NhaGa(MaNhaGa)
+	foreign key(MaLichTrinh)references LichTrinh(MaLichTrinh)
 )
 go
-insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaNhaGa) values (N'Vé Tàu SE', 50000, 0, 1, 1);
-insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaNhaGa) values (N'Vé Tàu SE', 50000, 0, 2, 1);
-insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaNhaGa) values (N'Vé Tàu SE', 50000, 0, 3, 1);
-insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaNhaGa) values (N'Vé Tàu SE', 50000, 0, 4, 1);
-insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaNhaGa) values (N'Vé Tàu SE', 50000, 0, 5, 1);
-insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaNhaGa) values (N'Vé Tàu SE', 50000, 0, 6, 1);
+insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaLichTrinh) values (N'Vé Tàu SE', 50000, 0, 1, 1);
+insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaLichTrinh) values (N'Vé Tàu SE', 50000, 0, 2, 1);
+insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaLichTrinh) values (N'Vé Tàu SE', 50000, 0, 3, 1);
+insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaLichTrinh) values (N'Vé Tàu SE', 50000, 0, 4, 1);
+insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaLichTrinh) values (N'Vé Tàu SE', 50000, 0, 5, 1);
+insert into VeTau (TenVeTau, GiaVe, TrangThai, MaKieuGhe, MaLichTrinh) values (N'Vé Tàu SE', 50000, 0, 6, 1);
 go
 create table PhieuDatVe
 (

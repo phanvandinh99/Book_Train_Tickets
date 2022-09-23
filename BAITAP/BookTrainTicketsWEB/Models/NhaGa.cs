@@ -13,7 +13,6 @@ namespace BookTrainTicketsWEB.Models
         public NhaGa()
         {
             LichTrinh = new HashSet<LichTrinh>();
-            VeTau = new HashSet<VeTau>();
         }
 
         [Key]
@@ -31,8 +30,5 @@ namespace BookTrainTicketsWEB.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichTrinh> LichTrinh { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VeTau> VeTau { get; set; }
     }
 }
